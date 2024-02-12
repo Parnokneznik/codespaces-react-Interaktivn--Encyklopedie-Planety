@@ -1,29 +1,25 @@
+// App.jsx
+import React, { useState } from 'react';
 import './App.css';
+import PlanetList from './PlanetList';
+import PlanetDetail from './PlanetDetail';
 
-function App() {
+const App = () => {
+  const [selectedPlanet, setSelectedPlanet] = useState(null);
+
+  const handlePlanetSelect = (planet) => {
+    setSelectedPlanet(planet);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src="Octocat.png" className="App-logo" alt="logo" />
-        <p>
-          GitHub Codespaces <span className="heart">♥️</span> React
-        </p>
-        <p className="small">
-          Edit <code>src/App.jsx</code> and save to reload.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </p>
-      </header>
+    <div className="app">
+      <h1>Encyklopedie planet sluneční soustavy</h1>
+      <div className="container">
+        <PlanetList onPlanetSelect={handlePlanetSelect} />
+        <PlanetDetail planet={selectedPlanet} />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
